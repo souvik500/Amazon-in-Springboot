@@ -19,10 +19,8 @@ public class Card
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cardId;
 
-    @Column(nullable = false)
     private String cardNo;
 
-    @Column(unique = true)
     private int cvv;
 
     @Enumerated(EnumType.STRING)

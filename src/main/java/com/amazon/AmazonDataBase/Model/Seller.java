@@ -21,17 +21,14 @@ public class Seller
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int sellerId;
 
-    @Column(unique = true, nullable = false)
     private String name;
 
-    @Column(unique = true, nullable = false)
     private int age;
 
     private String  email;
 
     private Long mobileNo;
 
-    @Column(unique = true)
     private String pan;
 
     /**

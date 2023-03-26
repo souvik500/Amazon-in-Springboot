@@ -34,7 +34,7 @@ public class ProductService
          * I need to find seller with his id, Is he exists or not
          */
         try {
-            seller = sellerRepository.findById(productRequestDto.getSellerId()).get();
+            seller = sellerRepository.findById(1).get();
         }
         catch (Exception e) {
             throw new SellerNotFoundException("This Seller is not register, Pls Register First");
