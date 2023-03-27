@@ -3,6 +3,7 @@ package com.amazon.AmazonDataBase.Service;
 import com.amazon.AmazonDataBase.Convertor.CardConvertor;
 import com.amazon.AmazonDataBase.Convertor.CustomerConvertor;
 import com.amazon.AmazonDataBase.Model.Card;
+import com.amazon.AmazonDataBase.Model.Cart;
 import com.amazon.AmazonDataBase.Model.Customer;
 import com.amazon.AmazonDataBase.Repository.CustomerRepository;
 import com.amazon.AmazonDataBase.RequestDTO.CustomerRequestDto;
@@ -20,6 +21,12 @@ public class CustomerService
     public void addCustomer (CustomerRequestDto customerRequestDto)
     {
         Customer customer = CustomerConvertor.CustomerRequestDtoToCustomer(customerRequestDto);
+
+        Cart cart = new Cart();
+        cart.setCartTotal(0);
+        cart.setCustomer(customer);
+
+        customer.setCart(cart);
 
         customerRepository.save(customer);
     }

@@ -68,10 +68,16 @@ public class ProductService
     /*==================================Start===========================================*/
     public ProductResponseDto addProduct(ProductRequestDto productRequestDto) throws SellerNotFoundException {
 
+        System.out.println("a:"+productRequestDto.getSellerId());
+        System.out.println("b:"+productRequestDto.getProductCategory());
+        System.out.println("c:"+productRequestDto.getProductName());
+        System.out.println("d:"+productRequestDto.getQuantity());
+        System.out.println("f:"+productRequestDto.getPrice());
         Seller seller;
 
         try{
-            seller = sellerRepository.findById(2).get();
+
+            seller = sellerRepository.findById(productRequestDto.getSellerId()).get();
         }
         catch(Exception e){
             throw new SellerNotFoundException("Invalid Seller Id");

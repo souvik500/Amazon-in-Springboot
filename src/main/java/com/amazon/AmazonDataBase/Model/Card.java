@@ -17,7 +17,7 @@ public class Card
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int cardId;
+    private int id;
 
     private String cardNo;
 

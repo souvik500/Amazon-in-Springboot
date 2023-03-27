@@ -19,7 +19,7 @@ public class Seller
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int sellerId;
+    private int id;
 
     private String name;
 

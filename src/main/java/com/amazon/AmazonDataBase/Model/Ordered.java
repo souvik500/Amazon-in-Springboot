@@ -21,7 +21,7 @@ public class Ordered
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int orderId;
+    private int id;
 
     private String transactionId;
 

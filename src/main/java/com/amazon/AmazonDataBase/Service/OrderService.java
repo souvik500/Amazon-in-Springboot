@@ -28,6 +28,7 @@ public class OrderService
     {
         Product product;
         try {
+            System.out.println(orderRequestDto.getProductId());
             product = productRepository.findById(orderRequestDto.getProductId()).get();
         } catch (Exception e) {
             throw new ProductNotFoundException("Currently product isn't Exists");

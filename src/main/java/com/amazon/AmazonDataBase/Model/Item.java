@@ -16,7 +16,7 @@ public class Item
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int itemId;
+    private int id;
 
     private int requiredQuantity;
 
