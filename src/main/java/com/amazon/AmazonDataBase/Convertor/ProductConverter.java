@@ -16,7 +16,8 @@ public class ProductConverter
                 .quantity(productRequestDto.getQuantity())
                 .productStatus(ProductStatus.AVAILABLE)
                 .build();
-
+//        System.out.println(productRequestDto.getQuantity());
+//        System.out.println(productRequestDto.getPrice());
         return product;
     }
 
