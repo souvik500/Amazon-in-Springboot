@@ -23,18 +23,18 @@ public class ProductController
 
 
     @PostMapping("/addProduct")
-    public ResponseEntity addProduct (@RequestBody ProductRequestDto productRequestDto)
-    {
+    public ResponseEntity addProduct(@RequestBody ProductRequestDto productRequestDto){
+
         ProductResponseDto productResponseDto;
-        try {
+        try{
             productResponseDto = productService.addProduct(productRequestDto);
-        }
-        catch (Exception e){
-            return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
 
-        return new ResponseEntity(productResponseDto, HttpStatus.CREATED);
+        return new ResponseEntity(productResponseDto,HttpStatus.ACCEPTED);
     }
+
 
     @GetMapping("/get/getProduct/{category}")
     public List<ProductResponseDto> getProductByCategory (@PathVariable("category") ProductCategory productCategory) throws CategoryNotFoundException

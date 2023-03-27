@@ -46,17 +46,22 @@ public class CartService
         //If Product and Customer Both Present then you can Buy this item
         Cart cart = customer.getCart();
 
-        int totalCost = cart.getCartTotal() + orderRequestDto.getRequiredQuantity() * product.getPrice();
+        int newCost = cart.getCartTotal() + orderRequestDto.getRequiredQuantity() * product.getPrice();
 
-        cart.setCartTotal(totalCost);
+        cart.setCartTotal(newCost);
+
+        System.out.println(cart.getCartTotal());
 
         //Add Item
-        Item item = Item.builder()
-                .requiredQuantity(orderRequestDto.getRequiredQuantity())
-                .cart(cart)
-                .product(product)
-                .build();
-
+//        Item item = Item.builder()
+//                .requiredQuantity(orderRequestDto.getRequiredQuantity())
+//                .cart(cart)
+//                .product(product)
+//                .build();
+        Item item = new Item();
+        item.setProduct(product);
+        item.setCart(cart);
+        item.setRequiredQuantity(orderRequestDto.getRequiredQuantity());
         cart.getItems().add(item);
 
         customerRepository.save(customer);

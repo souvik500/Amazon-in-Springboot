@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/item")
+@RequestMapping("/cart")
 public class CartController
 {
     @Autowired
@@ -22,10 +22,14 @@ public class CartController
     @PostMapping("/addToCart")
     public ResponseEntity addToCart (@RequestBody OrderRequestDto orderRequestDto) throws ProductNotFoundException, CustomerNotFoundException
     {
+        try {
+            cartService.addToCart(orderRequestDto);
+            return new ResponseEntity<>("Order add to cart", HttpStatus.ACCEPTED);
+        }
+        catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
 
-        cartService.addToCart(orderRequestDto);
-
-        return new ResponseEntity<>("Order add to cart", HttpStatus.ACCEPTED);
     }
 
     @PutMapping("/checkOutCart/{id}")

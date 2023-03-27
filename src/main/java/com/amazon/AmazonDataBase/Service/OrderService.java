@@ -60,7 +60,7 @@ public class OrderService
         Ordered ordered = OrderConvertor.OrderRequestDtoToOrdered(orderRequestDto,deliveryCharge, totalCost);
 
         //SetCard for payment by Customer
-        Card card = customer.getCardList().get(1);
+        Card card = customer.getCardList().get(0);
         String cardNo = card.getCardNo();
 
         StringBuilder crossMarkCardNo = new StringBuilder();

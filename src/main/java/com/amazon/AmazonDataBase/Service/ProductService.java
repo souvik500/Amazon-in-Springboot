@@ -1,6 +1,6 @@
 package com.amazon.AmazonDataBase.Service;
 
-import com.amazon.AmazonDataBase.Convertor.ProductConverter;
+import com.amazon.AmazonDataBase.Convertor.ProductConvertor;
 import com.amazon.AmazonDataBase.Enum.ProductCategory;
 import com.amazon.AmazonDataBase.Exception.CategoryNotFoundException;
 import com.amazon.AmazonDataBase.Exception.SellerNotFoundException;
@@ -26,37 +26,71 @@ public class ProductService
     ProductRepository productRepository;
 
 
-    public ProductResponseDto addProduct(ProductRequestDto productRequestDto) throws SellerNotFoundException
-    {
+
+//    public ProductResponseDto addProduct(ProductRequestDto productRequestDto) throws SellerNotFoundException
+//    {
+//        Seller seller;
+//
+//        /**
+//         * I need to find seller with his id, Is he exists or not
+//         */
+//        try {
+//            seller = sellerRepository.findById(productRequestDto.getSellerId()).get();
+//        }
+//        catch (Exception e) {
+//            throw new SellerNotFoundException("This Seller is not register, Pls Register First");
+//        }
+//
+//        //If Seller Exists then add his/her products using Builder
+//        //Product product = ProductConverter.productRequestDtoToProduct(productRequestDto);
+//        Product product = Product.builder()
+//                .name(productRequestDto.getProductName())
+//                .price(productRequestDto.getPrice())
+//                .productCategory(productRequestDto.getCategory())
+//                .quantity(productRequestDto.getQuantity())
+//                .productStatus(ProductStatus.AVAILABLE)
+//                .build();
+//        product.setSeller(seller);
+//
+//        seller.getProductList().add(product);
+//
+//        sellerRepository.save(seller);
+//
+//        //Prepare ProductResponseDto
+//        ProductResponseDto productResponseDto = ProductConverter.productToProductResponseDto(product);
+//
+//        productResponseDto.setSellerName(seller.getName());
+//
+//        return productResponseDto;
+//
+//    }
+
+    /*==================================Start===========================================*/
+    public ProductResponseDto addProduct(ProductRequestDto productRequestDto) throws SellerNotFoundException {
+
         Seller seller;
 
-        /**
-         * I need to find seller with his id, Is he exists or not
-         */
-        try {
-            seller = sellerRepository.findById(productRequestDto.getSellerId()).get();
+        try{
+            seller = sellerRepository.findById(2).get();
         }
-        catch (Exception e) {
-            throw new SellerNotFoundException("This Seller is not register, Pls Register First");
+        catch(Exception e){
+            throw new SellerNotFoundException("Invalid Seller Id");
         }
 
-        //If Seller Exists then add his/her products using Builder
-        Product product = ProductConverter.productRequestDtoToProduct(productRequestDto);
+        Product product = ProductConvertor.productRequestDtoToProduct(productRequestDto);
         product.setSeller(seller);
 
         seller.getProductList().add(product);
 
+        // saved the seller and product - parent and child
         sellerRepository.save(seller);
 
-        //Prepare ProductResponseDto
-        ProductResponseDto productResponseDto = ProductConverter.productToProductResponseDto(product);
-
-        productResponseDto.setSellerName(seller.getName());
-
+        // prepare response
+        ProductResponseDto productResponseDto = ProductConvertor.productToProductResponseDto(product);
         return productResponseDto;
-
     }
 
+    /*========================================End=================================*/
 
     public List<ProductResponseDto> getProductByCategory(ProductCategory productCategory) throws CategoryNotFoundException {
         List<Product> productList;
@@ -70,7 +104,7 @@ public class ProductService
 
         for (Product product : productList)
         {
-            ProductResponseDto productResponseDto = ProductConverter.productToProductResponseDto(product);
+            ProductResponseDto productResponseDto = ProductConvertor.productToProductResponseDto(product);
 
             productResponseDtoList.add(productResponseDto);
         }
