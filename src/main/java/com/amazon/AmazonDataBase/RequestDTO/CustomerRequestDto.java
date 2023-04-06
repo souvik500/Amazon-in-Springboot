@@ -5,18 +5,22 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+import lombok.*;
+
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class CustomerRequestDto
-{
+@Data
+@Getter
+@Setter
+public class CustomerRequestDto {
+
     private String name;
 
     private int age;
 
-    private String email;
+    private String mobileNo;
 
-    private Long mobileNo;
+    private String email;
 
 }

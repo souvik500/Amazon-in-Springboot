@@ -2,5 +2,5 @@ package com.amazon.AmazonDataBase.Enum;
 
 public enum ProductStatus
 {
-    AVAILABLE, OUTOFSTOCK, CANCELLED
+    AVAILABLE, OUT_OF_STOCK, NOT_AVAILABLE
 }

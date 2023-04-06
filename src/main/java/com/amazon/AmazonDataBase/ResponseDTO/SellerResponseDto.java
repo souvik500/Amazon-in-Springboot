@@ -5,13 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Builder
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-public class CustomerResponseDto {
-
-    private int CustomerId;
+public class SellerResponseDto {
 
     private String name;
 
@@ -21,5 +22,10 @@ public class CustomerResponseDto {
 
     private String email;
 
-    private int noOfItemsInCart;
+    private String panNo;
+
+    private String sellerAddress;
+
+    List<ProductResponseDto> productList = new ArrayList<>();
+
 }

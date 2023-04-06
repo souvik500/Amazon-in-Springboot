@@ -18,17 +18,31 @@ public class OrderController
     @Autowired
     OrderService orderService;
 
-    @PostMapping("/addOrder")
-    public ResponseEntity addOrder (@RequestBody OrderRequestDto orderRequestDto)
-    {
-        OrderResponseDto orderResponseDto;
+//    @PostMapping("/addOrder")
+//    public ResponseEntity addOrder (@RequestBody OrderRequestDto orderRequestDto)
+//    {
+//        OrderResponseDto orderResponseDto;
+//
+//        try {
+//            orderResponseDto = orderService.addOrder(orderRequestDto);
+//            return new ResponseEntity<>(orderResponseDto, HttpStatus.ACCEPTED);
+//        }
+//        catch (Exception e) {
+//            return new ResponseEntity (e.getMessage(), HttpStatus.BAD_REQUEST);
+//        }
+//    }
 
-        try {
-            orderResponseDto = orderService.addOrder(orderRequestDto);
-            return new ResponseEntity<>(orderResponseDto, HttpStatus.ACCEPTED);
+    @PostMapping("/place")
+    public ResponseEntity placeOrder(@RequestBody OrderRequestDto orderRequestDto){
+
+        OrderResponseDto orderResponseDto;
+        try{
+            orderResponseDto = orderService.placeOrder(orderRequestDto);
         }
-        catch (Exception e) {
-            return new ResponseEntity (e.getMessage(), HttpStatus.BAD_REQUEST);
+        catch (Exception e){
+            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
+        return new ResponseEntity(orderResponseDto,HttpStatus.ACCEPTED);
+
     }
 }

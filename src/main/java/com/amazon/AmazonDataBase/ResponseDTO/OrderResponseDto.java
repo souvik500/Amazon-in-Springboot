@@ -5,27 +5,26 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
+import java.util.Date;
 
-@Data
 @Builder
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-public class OrderResponseDto
-{
+@AllArgsConstructor
+public class OrderResponseDto {
+
     private String productName;
 
     private Date orderDate;
 
-    private int itemPrice;
+    private int quantityOrdered;
 
-    private int orderQuantity;
-
-    private int deliveryCharge;
+    private int ItemCost;
 
     private int totalCost;
 
-    private String cardUsedForPayment;
+    private int deliveryCharge;
 
+    private String cardUsedForPayment;
 
 }

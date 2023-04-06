@@ -8,29 +8,57 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
+//@Entity
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Builder
+//public class Card
+//{
+//    @Id
+//    @Column(name = "card_id")
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private int id;
+//
+//    private String cardNo;
+//
+//    private int cvv;
+//
+//    @Enumerated(EnumType.STRING)
+//    private CardType cardType;
+//
+//    /**
+//     * Relation b/w child (Card) to parent (Customer) [Many : 1]
+//     */
+//    @ManyToOne
+//    @JoinColumn
+//    Customer customer;
+//
+//}
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class Card
-{
+@Entity
+@Table(name ="card")
+public class Card {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private int id;
 
+    @Column(unique = true)
     private String cardNo;
 
-    private int cvv;
+    private String cvv;
 
     @Enumerated(EnumType.STRING)
     private CardType cardType;
 
-    /**
-     * Relation b/w child (Card) to parent (Customer) [Many : 1]
-     */
     @ManyToOne
     @JoinColumn
     Customer customer;
+
+
 
 }

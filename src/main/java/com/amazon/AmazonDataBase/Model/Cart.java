@@ -9,14 +9,36 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+//@Entity
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
+//public class Cart {
+//    @Id
+//    @Column(name = "cart_id")
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private int id;
+//
+//    private int cartTotal;
+//
+//    @OneToOne
+//    @JoinColumn
+//    Customer customer;
+//
+//    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
+//    List<Item> items = new ArrayList<>();
+//}
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name ="cart")
 public class Cart {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    private  int id;
 
     private int cartTotal;
 
@@ -24,6 +46,8 @@ public class Cart {
     @JoinColumn
     Customer customer;
 
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cart",cascade =  CascadeType.ALL)
     List<Item> items = new ArrayList<>();
+
+
 }

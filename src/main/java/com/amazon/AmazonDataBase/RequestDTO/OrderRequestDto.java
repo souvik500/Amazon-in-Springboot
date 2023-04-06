@@ -5,15 +5,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
-public class OrderRequestDto
-{
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class OrderRequestDto {
+
     private int productId;
 
     private int customerId;
 
     private int requiredQuantity;
 }
+
